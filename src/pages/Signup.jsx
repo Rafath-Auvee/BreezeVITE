@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Loading from "./../components/Loading";
+import auth from "./../firebase/firebase.config";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
@@ -61,7 +62,29 @@ const Signup = () => {
                       type="text"
                       placeholder="Email"
                       className="input input-bordered"
+                      {...register("email", {
+                        required: {
+                          value: true,
+                          message: "Email is Required",
+                        },
+                        pattern: {
+                          value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                          message: "Provide a valid Email",
+                        },
+                      })}
                     />
+                    <label className="label">
+                      {errors.email?.type === "required" && (
+                        <span className="label-text-alt text-red-500">
+                          {errors.email.message}
+                        </span>
+                      )}
+                      {errors.email?.type === "pattern" && (
+                        <span className="label-text-alt text-red-500">
+                          {errors.email.message}
+                        </span>
+                      )}
+                    </label>
                   </div>
                   <div className="form-control">
                     <label className="label">
@@ -71,24 +94,40 @@ const Signup = () => {
                       type="text"
                       placeholder="Password"
                       className="input input-bordered"
+                      {...register("password", {
+                        required: {
+                          value: true,
+                          message: "Password is Required",
+                        },
+                        minLength: {
+                          value: 6,
+                          message: "Must be 6 characters or longer",
+                        },
+                      })}
                     />
-                  </div>
-                  <div className="form-control">
                     <label className="label">
-                      <span className="label-text">Confirm Password</span>
+                      {errors.password?.type === "required" && (
+                        <span className="label-text-alt text-red-500">
+                          {errors.password.message}
+                        </span>
+                      )}
+                      {errors.password?.type === "minLength" && (
+                        <span className="label-text-alt text-red-500">
+                          {errors.password.message}
+                        </span>
+                      )}
                     </label>
-                    <input
-                      type="text"
-                      placeholder="Confirm Password"
-                      className="input input-bordered"
-                    />
                   </div>
+
                   <div className="form-control mt-6">
                     <button className="btn btn-primary text-green-950">
-                      Login
+                      Sign Up
                     </button>
                   </div>
-                  <div className="form-control mt-6">
+                  
+                  <div className="mt-2 divider divide-black"></div>
+
+                  <div className="form-control">
                     <button className="btn bg-orange-500 text-orange-950">
                       Signup With Google
                     </button>
