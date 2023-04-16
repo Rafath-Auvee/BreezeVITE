@@ -73,8 +73,16 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{menuItems}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Get started</a>
+        <div className="navbar-end mr-4">
+          <button className="btn btn-primary btn-md text-green-950">
+            <a
+              href="https://github.com/Rafath-Auvee/BreezeVITE"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              My Github 👨‍💻
+            </a>
+          </button>
         </div>
       </div>
     </div>
