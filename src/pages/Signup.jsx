@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Loading from "./../components/Loading";
 import auth from "./../firebase/firebase.config";
+import toast, { Toaster } from 'react-hot-toast';
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
@@ -38,6 +39,12 @@ const Signup = () => {
   }
 
   if (user || gUser) {
+    toast.success("Welcome User")
+    navigate("/");
+  }
+  if (error) {
+    toast.error("Error in sign up")
+    console.log("Error");
     navigate("/");
   }
 
@@ -124,7 +131,7 @@ const Signup = () => {
                       Sign Up
                     </button>
                   </div>
-                  
+
                   <div className="mt-2 divider divide-black"></div>
 
                   <div className="form-control">

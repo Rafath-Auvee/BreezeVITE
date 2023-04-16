@@ -7,6 +7,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Loading from "./../components/Loading";
 import auth from "./../firebase/firebase.config";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -28,6 +29,10 @@ const Login = () => {
     return <Loading></Loading>;
   }
 
+  if (user || gUser) {
+    toast.success("Welcome User");
+  }
+  
   if (error || gError) {
     signInError = (
       <p className="text-red-500">
