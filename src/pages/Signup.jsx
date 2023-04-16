@@ -135,7 +135,7 @@ const Signup = () => {
                   <div className="mt-2 divider divide-black"></div>
 
                   <div className="form-control">
-                    <button className="btn bg-orange-500 text-orange-950">
+                    <button className="btn bg-orange-500 text-orange-950" onClick={() => signInWithGoogle()}>
                       Signup With Google
                     </button>
                   </div>
