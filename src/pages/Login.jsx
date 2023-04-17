@@ -30,7 +30,7 @@ const Login = () => {
   }
 
   if (user || gUser) {
-    toast.success("Welcome User");
+    toast.success("Welcome User. Login Successful");
   }
   
   if (error || gError) {
